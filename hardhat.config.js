@@ -13,21 +13,29 @@ require("hardhat-deploy")
 const COINMARKETCAP_API_KEY = process.env.COINMARKETCAP_API_KEY || ""
 const RINKEBY_RPC_URL =
     process.env.RINKEBY_RPC_URL || "https://eth-rinkeby.alchemyapi.io/v2/your-api-key"
+const YCC_RPC_URL = process.env.YCC_RPC_URL || ""
 const PRIVATE_KEY = process.env.PRIVATE_KEY || ""
 const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY || ""
 
 module.exports = {
-    defaultNetwork: "hardhat",
+    defaultNetwork: "ycc",
     networks: {
         hardhat: {
             chainId: 31337,
             // gasPrice: 130000000000,
         },
-        rinkeby: {
-            url: RINKEBY_RPC_URL,
-            accounts: [PRIVATE_KEY],
-            chainId: 4,
-            blockConfirmations: 6,
+		ycc: {
+			chainId: 999,
+            url: "http://172.22.16.242:8545/",
+			from: "0x6856f610b40e7321cace9e1f8752315110862573",
+			accounts: ["0x3967abcafaea83fee72766ca6dae578f4f156b5d1dae1ddf119e4564d5e2658c"]
+			//accounts: {
+			//	mnemonic: "insect click process usual crime extra vague patch rule change disease between filter occur point",
+			//	path: "m/44'/60'/0'/0",
+			//	initialIndex: 0,
+			//	count: 20,
+			//	passphrase: "colin1211",
+			//},
         },
     },
     solidity: {
